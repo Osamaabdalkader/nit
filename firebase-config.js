@@ -1,5 +1,4 @@
-// firebase-config.js
-// تم دمج إعدادات Firebase الخاصة بك هنا
+// تهيئة Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyAzYZMxqNmnLMGYnCyiJYPg2MbxZMt0co0",
     authDomain: "osama-91b95.firebaseapp.com",
@@ -11,23 +10,8 @@ const firebaseConfig = {
     measurementId: "G-LEM5PVPJZC"
 };
 
-// تهيئة Firebase
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-// تصدير الكائنات التي ستحتاجها في ملفات JS الأخرى
-export const auth = firebase.auth();
-export const db = firebase.database();
-export const storage = firebase.storage(); // تم تضمين Storage هنا
-
-// دالة مساعدة للحصول على UID المدير (مهم: راجع الملاحظات الأمنية في الدليل الكامل)
-let adminUserUid = null;
-export async function getAdminUid() {
-    if (adminUserUid) return adminUserUid;
-
-    const snapshot = await db.ref('users').orderByChild('role').equalTo('admin').limitToFirst(1).once('value');
-    if (snapshot.exists()) {
-        adminUserUid = Object.keys(snapshot.val())[0];
-        return adminUserUid;
-    }
-    return null;
-}
+const auth = firebase.auth();
+const database = firebase.database();
+const storage = firebase.storage();

@@ -5,32 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة تحكم الإدارة</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
-    <script type="module" src="firebase-config.js"></script>
-    <script type="module" src="admin-panel.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1>لوحة تحكم الإدارة</h1>
-        <p id="user-status"></p>
-        <button id="logout-btn">تسجيل الخروج</button>
-
-        <div id="admin-messaging-section">
-            <h3>اختيار مستخدم للمراسلة:</h3>
-            <select id="user-list-select">
-                <option value="">اختر مستخدم</option>
-            </select>
-            <button id="load-user-messages-btn">تحميل محادثة المستخدم</button>
-
-            <h3>محادثة مع <span id="current-chat-user-name"></span>:</h3>
-            <div id="admin-messages" class="message-list"></div>
-            <div class="message-input-area">
-                <textarea id="admin-message-text" placeholder="اكتب ردك هنا..."></textarea>
-                <button id="send-message-to-user-btn">إرسال إلى المستخدم</button>
+        <div class="header">
+            <h1>لوحة تحكم الإدارة</h1>
+            <button id="logoutBtn" class="logout-btn">تسجيل الخروج</button>
+        </div>
+        
+        <div class="admin-panel">
+            <div class="conversations-list">
+                <h2>المحادثات</h2>
+                <input type="text" id="searchUsers" placeholder="بحث عن مستخدم...">
+                <div id="usersList" class="users-list">
+                    <!-- سيتم عرض قائمة المستخدمين هنا -->
+                </div>
+            </div>
+            
+            <div class="chat-container">
+                <div id="chatHeader" class="chat-header">
+                    <h2 id="currentUserName">حدد مستخدم للبدء</h2>
+                </div>
+                
+                <div id="messagesContainer" class="messages-container">
+                    <!-- سيتم عرض الرسائل هنا -->
+                </div>
+                
+                <div class="message-input">
+                    <textarea id="messageInput" placeholder="اكتب رسالتك هنا..."></textarea>
+                    <button id="sendBtn" class="send-btn">إرسال</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="admin-panel.js"></script>
 </body>
 </html>
