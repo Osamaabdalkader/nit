@@ -3,46 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة تحكم الإدارة</title>
+    <title>لوحة التحكم - نظام المراسلة</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="header">
+        <div class="logo">لوحة تحكم الإدارة</div>
+        <button id="logout-btn" class="btn btn-secondary">تسجيل الخروج</button>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <h1>لوحة تحكم الإدارة</h1>
-            <button id="logoutBtn" class="logout-btn">تسجيل الخروج</button>
-        </div>
-        
-        <div class="admin-panel">
-            <div class="conversations-list">
-                <h2>المحادثات</h2>
-                <input type="text" id="searchUsers" placeholder="بحث عن مستخدم...">
-                <div id="usersList" class="users-list">
-                    <!-- سيتم عرض قائمة المستخدمين هنا -->
-                </div>
+        <div class="admin-container">
+            <div class="conversations-panel">
+                <h3>المحادثات</h3>
+                <div id="conversations-list"></div>
             </div>
-            
-            <div class="chat-container">
-                <div id="chatHeader" class="chat-header">
-                    <h2 id="currentUserName">حدد مستخدم للبدء</h2>
+            <div id="chat-container" class="chat-container" style="display: none;">
+                <div class="header">
+                    <h3>المحادثة مع: <span id="current-contact"></span></h3>
                 </div>
-                
-                <div id="messagesContainer" class="messages-container">
-                    <!-- سيتم عرض الرسائل هنا -->
-                </div>
-                
-                <div class="message-input">
-                    <textarea id="messageInput" placeholder="اكتب رسالتك هنا..."></textarea>
-                    <button id="sendBtn" class="send-btn">إرسال</button>
+                <div id="messages-container" class="messages-container"></div>
+                <div class="message-input-container">
+                    <input type="text" id="message-input" class="message-input" placeholder="اكتب رسالتك هنا...">
+                    <button id="send-btn" class="send-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
     <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
     <script src="admin-panel.js"></script>
 </body>
 </html>
